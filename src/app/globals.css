@@ -122,4 +122,65 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Code block styles for rehype-pretty-code */
+  pre {
+    @apply overflow-x-auto rounded-lg border border-border bg-muted p-4 text-sm;
+  }
+
+  pre > code {
+    @apply grid;
+  }
+
+  code {
+    @apply font-mono text-sm;
+  }
+
+  /* Inline code */
+  :not(pre) > code {
+    @apply rounded bg-muted px-1.5 py-0.5 text-foreground;
+  }
+
+  /* Code block line styling */
+  [data-line] {
+    @apply px-4 -mx-4;
+  }
+
+  [data-highlighted-line] {
+    @apply bg-accent/50;
+  }
+
+  /* Dual theme support - show/hide based on class */
+  pre[data-theme="light"],
+  code[data-theme="light"] {
+    display: block;
+  }
+
+  pre[data-theme="dark"],
+  code[data-theme="dark"] {
+    display: none;
+  }
+
+  .dark pre[data-theme="light"],
+  .dark code[data-theme="light"] {
+    display: none;
+  }
+
+  .dark pre[data-theme="dark"],
+  .dark code[data-theme="dark"] {
+    display: block;
+  }
+
+  /* Override shiki background to use our CSS vars */
+  pre[data-theme] {
+    background-color: var(--muted) !important;
+  }
+
+  code[data-theme] span {
+    color: var(--shiki-light);
+  }
+
+  .dark code[data-theme] span {
+    color: var(--shiki-dark);
+  }
 }

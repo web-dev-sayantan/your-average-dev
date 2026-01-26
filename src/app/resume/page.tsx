@@ -95,11 +95,11 @@ export default function ResumePage() {
             </span>
           </p>
           <p className="mt-3 text-muted-foreground">
-            Because let's be real, nobody uses{" "}
-            <span className="text-foreground">one resume</span> anymore. We all
-            ask ChatGPT to tailor our resume for every job we apply to. So here
-            are a bunch of pre-baked versions of me, optimized for different
-            roles.
+            I don't know anyone who uses{" "}
+            <span className="text-foreground">one resume</span> anymore. Half of
+            OpenAI's revenue comes from people using ChatGPT to tailor their
+            resume for every job they apply to. So here are a bunch of pre-baked
+            versions of me, optimized for different roles.
           </p>
           <p className="mt-2 text-muted-foreground italic">
             Pick one, print it, pretend I'm the perfect fit. 🎭

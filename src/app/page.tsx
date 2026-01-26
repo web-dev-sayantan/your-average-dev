@@ -7,7 +7,7 @@ export default function Home() {
         <section>
           <p className="text-muted-foreground">
             Lorem ipsum,{" "}
-            <span className="dark:hidden text-black">
+            <span className="dark:hidden text-destructive">
               Light mode, seriously? 😒
             </span>
           </p>

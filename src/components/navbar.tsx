@@ -18,7 +18,7 @@ export default function Navbar() {
 
         <div className="hidden items-center justify-center gap-12 md:flex">
           <Link
-            href="/blog"
+            href="/rants"
             className="text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             rants
