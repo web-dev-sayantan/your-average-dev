@@ -106,14 +106,14 @@ export default function ResumePage() {
           </p>
 
           <div className="mt-10">
-            <h2 className="flex items-center text-foreground text-lg">
+            <h2 className="flex flex-wrap items-center text-foreground text-lg">
               <FileText className="size-5 mr-2" />
               Preset Resumes &nbsp;
-              <span className="text-sm text-muted-foreground">
+              <span className="text-sm text-destructive">
                 ( None works right now, but will someday )
               </span>
             </h2>
-            <p className="text-muted-foreground text-sm mt-1">
+            <p className="text-muted-foreground text-sm mt-2">
               Click to open print preview. Yes, it's that simple.
             </p>
 
@@ -162,7 +162,7 @@ e.g., 'Looking for a Senior Frontend Engineer with 5+ years of React experience,
               />
             </div>
 
-            <div className="mt-4 flex items-center gap-4">
+            <div className="mt-4 flex flex-wrap items-center gap-4">
               <Button
                 onClick={handleGenerateTailored}
                 disabled={!jobRequirements.trim() || isGenerating}

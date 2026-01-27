@@ -12,7 +12,7 @@ export default function Home() {
             </span>
           </p>
           <br />
-          <p className="flex items-baseline text-muted-foreground">
+          <p className="flex flex-wrap items-baseline text-muted-foreground">
             I'm{" "}
             <h1 className="text-2xl text-foreground">&nbsp;Sayantan.&nbsp;</h1>{" "}
             An average software&nbsp;
@@ -27,16 +27,16 @@ export default function Home() {
             tables, autocompletes, calendars, multiselects and what not.
           </p>
           <br />
-          <p className="text-muted-foreground">
-            Why should you hire me?{" "}
+          <p className="flex flex-wrap text-muted-foreground">
+            Why should you hire me?&nbsp;{" "}
             <span className="text-foreground">
-              I understand Closures in JS. 😎
+              Because I understand Closures. 😎
             </span>
           </p>
           <p className="text-muted-foreground">
             Though less significant with Claude around, but I also know a bit of
           </p>
-          <p className="flex items-center">
+          <p className="flex flex-wrap items-center">
             <Image
               src="/angular_gradient.png"
               alt="Angular Logo"
@@ -54,7 +54,7 @@ export default function Home() {
             />
             &nbsp;Node.js (&nbsp;
             <Image src="/Bun.svg" alt="Bun Logo" width={18} height={18} />
-            &nbsp;Bun because it's cool)
+            &nbsp;Bun because it's apparently cool)
           </p>
           <br />
           <h2 className="flex items-baseline"> 👑&nbsp; Achievements: </h2>
