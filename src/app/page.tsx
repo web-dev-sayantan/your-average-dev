@@ -48,18 +48,57 @@ export default function Home() {
               width={20}
               height={20}
             />
-            &nbsp;Angular, &nbsp;
+            &nbsp;
+            <a
+              href="https://angular.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline hover:decoration-dotted hover:underline-offset-3"
+            >
+              Angular
+            </a>
+            , &nbsp;
             <Image src="/React.svg" alt="React Logo" width={18} height={18} />
-            &nbsp;React,&nbsp;
+            &nbsp;
+            <a
+              href="https://react.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline hover:decoration-dotted hover:underline-offset-3"
+            >
+              React
+            </a>
+            ,&nbsp;
             <Image
               src="/Node.js.svg"
               alt="Node.js Logo"
               width={18}
               height={18}
             />
-            &nbsp;Node.js (&nbsp;
+            &nbsp;
+            <a
+              href="https://nodejs.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline hover:decoration-dotted hover:underline-offset-3"
+            >
+              Node.js
+            </a>
+            &nbsp; <span className="text-muted-foreground">(</span>&nbsp;
             <Image src="/Bun.svg" alt="Bun Logo" width={18} height={18} />
-            &nbsp;Bun because it's apparently cool)
+            &nbsp;
+            <a
+              href="https://bun.sh"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline hover:decoration-dotted hover:underline-offset-3"
+            >
+              Bun
+            </a>
+            &nbsp;{" "}
+            <span className="text-muted-foreground">
+              because it's apparently cool)
+            </span>
           </p>
           <br />
           <h2 className="flex items-baseline"> 👑&nbsp; Achievements: </h2>
@@ -70,9 +109,21 @@ export default function Home() {
             <li className="text-muted-foreground">
               A single page form that will take a full day to fill up? ✅
             </li>
-            <li className="text-muted-foreground mb-3">
+            <li className="text-muted-foreground">
               Read 10,000 lines to find why the save button is not getting
               enabled? ✅
+            </li>
+            <li className="text-muted-foreground mb-3">
+              A codebase that{" "}
+              <a
+                href="https://www.britannica.com/biography/Dennis-M-Ritchie"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-dotted underline-offset-3 hover:text-foreground transition-colors"
+              >
+                Dennis Ritchie
+              </a>{" "}
+              would have approved? ❌
             </li>
           </ul>
           <br />
