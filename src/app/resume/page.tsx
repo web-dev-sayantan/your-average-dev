@@ -138,22 +138,20 @@ export default function ResumePage() {
                       variant="ghost"
                       size="icon-sm"
                       onClick={() => handlePrintResume(preset.pdfPath)}
-                      aria-label={`Preview ${preset.title} resume`}
+                      aria-label={`Preview and print ${preset.title} resume`}
                       title="Preview & Print"
                     >
                       <Printer className="size-4" />
                     </Button>
-                    <Button
-                      asChild
-                      variant="ghost"
-                      size="icon-sm"
+                    <a
+                      href={preset.pdfPath}
+                      download
                       aria-label={`Download ${preset.title} resume`}
                       title="Download PDF"
+                      className="inline-flex items-center justify-center size-8 rounded-[min(var(--radius-md),10px)] border border-transparent bg-clip-padding text-sm font-medium focus-visible:ring-[3px] focus-visible:border-ring focus-visible:ring-ring/50 whitespace-nowrap transition-all disabled:pointer-events-none disabled:opacity-50 hover:bg-muted hover:text-foreground dark:hover:bg-muted/50"
                     >
-                      <a href={preset.pdfPath} download>
-                        <Download className="size-4" />
-                      </a>
-                    </Button>
+                      <Download className="size-4" />
+                    </a>
                   </div>
                 </div>
               ))}
@@ -170,13 +168,18 @@ export default function ResumePage() {
             </p>
 
             <div className="mt-4">
+              <label htmlFor="job-requirements" className="sr-only">
+                Job Requirements
+              </label>
               <textarea
+                id="job-requirements"
                 value={jobRequirements}
                 onChange={(e) => setJobRequirements(e.target.value)}
                 placeholder="Paste the job description here... 
 
 e.g., 'Looking for a Senior Frontend Engineer with 5+ years of React experience, expertise in TypeScript, and a passion for building scalable design systems...'"
                 className="w-full h-40 p-4 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground/60 resize-none focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all"
+                aria-label="Job requirements"
               />
             </div>
 
