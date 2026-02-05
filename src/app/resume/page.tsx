@@ -1,6 +1,6 @@
 "use client";
 
-import { FileText, Sparkles, Wand2 } from "lucide-react";
+import { Download, FileText, Printer, Sparkles, Wand2 } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -18,21 +18,21 @@ const resumePresets: ResumePreset[] = [
     title: "Frontend Engineer",
     emoji: "🎨",
     description: "React, Angular, and enough CSS to make designers cry",
-    pdfPath: "/resumes/frontend-engineer.pdf",
+    pdfPath: "/resumes/sayantan-dey_frontend-engineer_2026.pdf",
   },
   {
     id: "backend",
     title: "Backend Engineer",
     emoji: "⚙️",
     description: "APIs, databases, and the dark arts of server management",
-    pdfPath: "/resumes/backend-engineer.pdf",
+    pdfPath: "/resumes/sayantan-dey_frontend-engineer_2026.pdf",
   },
   {
     id: "fullstack",
     title: "Full Stack Engineer",
     emoji: "🥞",
     description: "Jack of all trades, master of... some? Maybe?",
-    pdfPath: "/resumes/fullstack-engineer.pdf",
+    pdfPath: "/resumes/sayantan-dey_frontend-engineer_2026.pdf",
   },
   {
     id: "java",
@@ -40,21 +40,21 @@ const resumePresets: ResumePreset[] = [
     emoji: "☕",
     description:
       "public static void main... just kidding, I don't do this anymore",
-    pdfPath: "/resumes/java-developer.pdf",
+    pdfPath: "/resumes/sayantan-dey_frontend-engineer_2026.pdf",
   },
   {
     id: "javascript",
     title: "JavaScript Developer",
     emoji: "🟨",
     description: "undefined is not a function, but I am",
-    pdfPath: "/resumes/javascript-developer.pdf",
+    pdfPath: "/resumes/sayantan-dey_frontend-engineer_2026.pdf",
   },
   {
     id: "ai-engineer",
     title: "AI-Powered Engineer",
     emoji: "🤖",
     description: "I talk to Claude more than I talk to humans",
-    pdfPath: "/resumes/ai-engineer.pdf",
+    pdfPath: "/resumes/sayantan-dey_frontend-engineer_2026.pdf",
   },
 ];
 
@@ -64,9 +64,8 @@ export default function ResumePage() {
   const [isGenerated, setIsGenerated] = useState(false);
 
   const handlePrintResume = (pdfPath: string) => {
-    // TODO: Open the PDF in a new window and trigger print
-    // For now, this is a placeholder that will open print preview
-    window.print();
+    const previewWindow = window.open(pdfPath, "_blank", "noopener,noreferrer");
+    previewWindow?.focus();
   };
 
   const handleGenerateTailored = () => {
@@ -105,39 +104,58 @@ export default function ResumePage() {
             Pick one, print it, pretend I'm the perfect fit. 🎭
           </p>
 
-          <div className="mt-10">
+          <div className="mt-10 group">
             <h2 className="flex flex-wrap items-center text-foreground text-lg">
               <FileText className="size-5 mr-2" />
               Preset Resumes &nbsp;
-              <span className="text-sm text-destructive">
-                ( None works right now, but will someday )
+              <span className="text-sm text-destructive opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100">
+                ( All are same now, when I learn all, I'll make them different.
+                )
               </span>
             </h2>
             <p className="text-muted-foreground text-sm mt-2">
-              Click to open print preview. Yes, it's that simple.
+              Preview/print or download the PDF. Yes, it's that simple.
             </p>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               {resumePresets.map((preset) => (
-                <button
-                  type="button"
+                <div
                   key={preset.id}
-                  onClick={() => handlePrintResume(preset.pdfPath)}
-                  className="group relative flex flex-col items-start p-4 rounded-lg border border-border bg-card hover:bg-muted/50 transition-all text-left cursor-pointer"
+                  className="relative flex flex-col items-start p-4 rounded-lg border border-border bg-card hover:bg-muted/50 transition-all text-left"
                 >
                   <div className="flex items-center gap-2">
                     <span className="text-2xl">{preset.emoji}</span>
-                    <h3 className="text-foreground font-medium group-hover:underline underline-offset-4">
+                    <h3 className="text-foreground font-medium">
                       {preset.title}
                     </h3>
                   </div>
                   <p className="mt-2 text-sm text-muted-foreground">
                     {preset.description}
                   </p>
-                  <span className="absolute top-3 right-3 text-muted-foreground/50 group-hover:text-foreground transition-colors">
-                    <FileText className="size-4" />
-                  </span>
-                </button>
+                  <div className="mt-4 flex items-center gap-2">
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="icon-sm"
+                      onClick={() => handlePrintResume(preset.pdfPath)}
+                      aria-label={`Preview ${preset.title} resume`}
+                      title="Preview & Print"
+                    >
+                      <Printer className="size-4" />
+                    </Button>
+                    <Button
+                      asChild
+                      variant="ghost"
+                      size="icon-sm"
+                      aria-label={`Download ${preset.title} resume`}
+                      title="Download PDF"
+                    >
+                      <a href={preset.pdfPath} download>
+                        <Download className="size-4" />
+                      </a>
+                    </Button>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
