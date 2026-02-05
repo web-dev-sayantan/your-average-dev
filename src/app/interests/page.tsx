@@ -42,8 +42,7 @@ const deadInterests: Interest[] = [
   },
   {
     name: "Writing Java Code",
-    description:
-      'public static void main... System.out.println("Please NO! 😤")',
+    description: 'public static void main… System.out.println("Please NO! 😤")',
   },
   {
     name: "Strategizing Clash of Clans wars",
@@ -55,7 +54,10 @@ const deadInterests: Interest[] = [
 export default function Interests() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+      <main
+        id="main-content"
+        className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start"
+      >
         <section>
           <p className="text-muted-foreground">
             Lorem ipsum,{" "}
@@ -64,12 +66,12 @@ export default function Interests() {
             </span>
           </p>
           <br />
-          <p className="flex items-baseline text-muted-foreground">
-            Things I do when{" "}
+          <div className="flex items-baseline text-muted-foreground">
+            <span>Things I do when</span>
             <h1 className="text-2xl text-foreground">
               &nbsp;I'm not coding.&nbsp;
             </h1>
-          </p>
+          </div>
           <p className="text-muted-foreground mt-3">
             Or pretending to code while actually watching YouTube tutorials at
             2x speed.

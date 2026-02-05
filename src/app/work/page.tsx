@@ -83,8 +83,12 @@ const internships = [
 export default function WorkPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+      <main
+        id="main-content"
+        className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start"
+      >
         <section className="w-full">
+          <h1 className="sr-only">Work</h1>
           <p className="text-lg flex items-baseline">
             Work, boring.{" "}
             <span className="dark:hidden text-red-500 text-normal px-3">
@@ -110,7 +114,7 @@ export default function WorkPage() {
                     {role.period} · {role.title}
                   </p>
                   <p className="flex items-center text-muted-foreground">
-                    <MapPin className="size-5" />
+                    <MapPin className="size-5" aria-hidden="true" />
                     &nbsp; {role.location}
                   </p>
                 </div>

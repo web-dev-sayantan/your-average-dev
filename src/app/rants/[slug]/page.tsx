@@ -1,13 +1,13 @@
-import { notFound } from "next/navigation";
-import { MDXRemote } from "next-mdx-remote/rsc";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypePrettyCode from "rehype-pretty-code";
-import { getAllRantSlugs, getRantBySlug } from "@/lib/mdx";
-import { mdxComponents } from "@/lib/mdx-components";
+import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { notFound } from "next/navigation";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypePrettyCode from "rehype-pretty-code";
+import rehypeSlug from "rehype-slug";
+import { getAllRantSlugs, getRantBySlug } from "@/lib/mdx";
+import { mdxComponents } from "@/lib/mdx-components";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -69,13 +69,16 @@ export default async function RantPage({ params }: PageProps) {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between px-16 py-32 bg-white dark:bg-black sm:items-start">
+      <main
+        id="main-content"
+        className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between px-16 py-32 bg-white dark:bg-black sm:items-start"
+      >
         <article className="w-full">
           <Link
             href="/rants"
             className="mb-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
-            <ArrowLeft className="size-4" />
+            <ArrowLeft className="size-4" aria-hidden="true" />
             Back to rants{" "}
             <span className="dark:hidden text-destructive">
               ( And to dark mode, please! )
@@ -83,9 +86,9 @@ export default async function RantPage({ params }: PageProps) {
           </Link>
 
           <header className="mb-8">
-            <p className="text-2xl font-semibold text-foreground">
+            <h1 className="text-2xl font-semibold text-foreground">
               {rant.emoji} {rant.title}
-            </p>
+            </h1>
             <p className="mt-2 text-sm text-muted-foreground">
               {formatDate(rant.date)} · {rant.readingTime} min read
             </p>

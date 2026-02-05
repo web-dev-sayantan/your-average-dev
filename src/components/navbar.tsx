@@ -4,7 +4,8 @@ import { Menu, MessageCircleMore, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import ThemeToggle from "@/components/theme-toggle";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,10 +24,16 @@ export default function Navbar() {
           >
             your_average_dev
           </Link>
-          <Link href="/say-hello" className="animate-pulse">
-            <Button>
-              <MessageCircleMore />
-            </Button>
+          <Link
+            href="/say-hello"
+            className={cn(
+              buttonVariants(),
+              "animate-pulse motion-reduce:animate-none",
+            )}
+            aria-label="Say hello"
+            title="Say hello"
+          >
+            <MessageCircleMore aria-hidden="true" />
           </Link>
         </div>
 
@@ -64,15 +71,18 @@ export default function Navbar() {
         <button
           type="button"
           aria-label="Open menu"
+          aria-controls="mobile-menu"
+          aria-expanded={isMenuOpen}
           className="inline-flex size-9 items-center justify-center rounded-md border border-border/60 text-foreground transition hover:bg-muted md:hidden"
           onClick={() => setIsMenuOpen(true)}
         >
-          <Menu className="h-5 w-5" />
+          <Menu className="h-5 w-5" aria-hidden="true" />
         </button>
       </nav>
 
       <div
-        className={`fixed right-0 top-0 z-50 flex h-dvh w-full flex-col bg-background/95 backdrop-blur transition-transform duration-300 md:hidden ${
+        id="mobile-menu"
+        className={`fixed right-0 top-0 z-50 flex h-dvh w-full flex-col bg-background/95 backdrop-blur overscroll-contain transition-transform duration-300 md:hidden ${
           isMenuOpen ? "translate-x-0" : "translate-x-full pointer-events-none"
         }`}
         aria-hidden={!isMenuOpen}
@@ -87,7 +97,7 @@ export default function Navbar() {
             className="inline-flex size-9 items-center justify-center rounded-md border border-border/60 text-foreground transition hover:bg-muted"
             onClick={handleCloseMenu}
           >
-            <X className="h-5 w-5" />
+            <X className="h-5 w-5" aria-hidden="true" />
           </button>
         </div>
 

@@ -31,7 +31,7 @@ const resumePresets: ResumePreset[] = [
     id: "fullstack",
     title: "Full Stack Engineer",
     emoji: "🥞",
-    description: "Jack of all trades, master of... some? Maybe?",
+    description: "Jack of all trades, master of… some? Maybe?",
     pdfPath: "/resumes/sayantan-dey_frontend-engineer_2026.pdf",
   },
   {
@@ -39,7 +39,7 @@ const resumePresets: ResumePreset[] = [
     title: "Java Developer",
     emoji: "☕",
     description:
-      "public static void main... just kidding, I don't do this anymore",
+      "public static void main… just kidding, I don't do this anymore",
     pdfPath: "/resumes/sayantan-dey_frontend-engineer_2026.pdf",
   },
   {
@@ -85,8 +85,12 @@ export default function ResumePage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+      <main
+        id="main-content"
+        className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start"
+      >
         <section className="w-full">
+          <h1 className="sr-only">Resumes</h1>
           <p className="text-lg flex items-baseline">
             Resumes, plural.{" "}
             <span className="dark:hidden text-red-500 text-normal px-3">
@@ -106,7 +110,7 @@ export default function ResumePage() {
 
           <div className="mt-10 group">
             <h2 className="flex flex-wrap items-center text-foreground text-lg">
-              <FileText className="size-5 mr-2" />
+              <FileText className="size-5 mr-2" aria-hidden="true" />
               Preset Resumes &nbsp;
               <span className="text-sm text-destructive opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100">
                 ( All are same now, when I learn all, I'll make them different.
@@ -121,7 +125,7 @@ export default function ResumePage() {
               {resumePresets.map((preset) => (
                 <div
                   key={preset.id}
-                  className="relative flex flex-col items-start p-4 rounded-lg border border-border bg-card hover:bg-muted/50 transition-all text-left"
+                  className="relative flex flex-col items-start p-4 rounded-lg border border-border bg-card hover:bg-muted/50 transition-colors text-left"
                 >
                   <div className="flex items-center gap-2">
                     <span className="text-2xl">{preset.emoji}</span>
@@ -141,16 +145,16 @@ export default function ResumePage() {
                       aria-label={`Preview and print ${preset.title} resume`}
                       title="Preview & Print"
                     >
-                      <Printer className="size-4" />
+                      <Printer className="size-4" aria-hidden="true" />
                     </Button>
                     <a
                       href={preset.pdfPath}
                       download
                       aria-label={`Download ${preset.title} resume`}
                       title="Download PDF"
-                      className="inline-flex items-center justify-center size-8 rounded-[min(var(--radius-md),10px)] border border-transparent bg-clip-padding text-sm font-medium focus-visible:ring-[3px] focus-visible:border-ring focus-visible:ring-ring/50 whitespace-nowrap transition-all disabled:pointer-events-none disabled:opacity-50 hover:bg-muted hover:text-foreground dark:hover:bg-muted/50"
+                      className="inline-flex items-center justify-center size-8 rounded-[min(var(--radius-md),10px)] border border-transparent bg-clip-padding text-sm font-medium focus-visible:ring-[3px] focus-visible:border-ring focus-visible:ring-ring/50 whitespace-nowrap transition-colors disabled:pointer-events-none disabled:opacity-50 hover:bg-muted hover:text-foreground dark:hover:bg-muted/50"
                     >
-                      <Download className="size-4" />
+                      <Download className="size-4" aria-hidden="true" />
                     </a>
                   </div>
                 </div>
@@ -160,7 +164,7 @@ export default function ResumePage() {
 
           <div className="mt-12">
             <h2 className="flex items-center text-foreground text-lg">
-              <Wand2 className="size-5 mr-2" />
+              <Wand2 className="size-5 mr-2" aria-hidden="true" />
               Custom Tailored Resume
             </h2>
             <p className="text-muted-foreground text-sm mt-1">
@@ -173,24 +177,29 @@ export default function ResumePage() {
               </label>
               <textarea
                 id="job-requirements"
+                name="jobRequirements"
                 value={jobRequirements}
                 onChange={(e) => setJobRequirements(e.target.value)}
-                placeholder="Paste the job description here... 
+                autoComplete="off"
+                placeholder="Paste the job description here… 
 
-e.g., 'Looking for a Senior Frontend Engineer with 5+ years of React experience, expertise in TypeScript, and a passion for building scalable design systems...'"
-                className="w-full h-40 p-4 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground/60 resize-none focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all"
+e.g., 'Looking for a Senior Frontend Engineer with 5+ years of React experience, expertise in TypeScript, and a passion for building scalable design systems…'"
+                className="w-full h-40 p-4 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground/60 resize-none focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-[color,background-color,border-color,box-shadow]"
                 aria-label="Job requirements"
               />
             </div>
 
-            <div className="mt-4 flex flex-wrap items-center gap-4">
+            <div
+              className="mt-4 flex flex-wrap items-center gap-4"
+              aria-live="polite"
+            >
               <Button
                 onClick={handleGenerateTailored}
                 disabled={!jobRequirements.trim() || isGenerating}
                 className="gap-2"
               >
-                <Sparkles className="size-4" />
-                {isGenerating ? "Generating..." : "Generate & Print"}
+                <Sparkles className="size-4" aria-hidden="true" />
+                {isGenerating ? "Generating…" : "Generate & Print"}
               </Button>
               {!jobRequirements.trim() && (
                 <span className="text-sm text-muted-foreground">

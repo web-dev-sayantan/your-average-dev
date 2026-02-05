@@ -1,10 +1,14 @@
-import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Twitter, Calendar, Mail } from "lucide-react";
+import { Calendar, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button-variants";
+import { cn } from "@/lib/utils";
 
 export default function SayHello() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+      <main
+        id="main-content"
+        className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start"
+      >
         <section className="w-full">
           <h1 className="text-2xl text-foreground mb-6">Say Hello</h1>
           <p className="text-muted-foreground mb-8">
@@ -14,7 +18,7 @@ export default function SayHello() {
           {/* Email Section */}
           <div className="mb-10">
             <h2 className="text-lg text-foreground mb-3 flex items-center">
-              <Mail className="w-5 h-5 mr-2" />
+              <Mail className="w-5 h-5 mr-2" aria-hidden="true" />
               Email
             </h2>
             <p className="text-muted-foreground mb-2">
@@ -39,33 +43,33 @@ export default function SayHello() {
             </p>
             <div className="flex gap-4">
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/web-dev-sayantan"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="GitHub"
               >
-                <Github className="w-5 h-5" />
+                <Github className="w-5 h-5" aria-hidden="true" />
                 <span className="text-sm">GitHub</span>
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://linkedin.com/in/webdevsayantan"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="LinkedIn"
               >
-                <Linkedin className="w-5 h-5" />
+                <Linkedin className="w-5 h-5" aria-hidden="true" />
                 <span className="text-sm">LinkedIn</span>
               </a>
               <a
-                href="https://twitter.com/yourusername"
+                href="https://x.com/no0bdev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="Twitter"
               >
-                <Twitter className="w-5 h-5" />
+                <Twitter className="w-5 h-5" aria-hidden="true" />
                 <span className="text-sm">Twitter</span>
               </a>
             </div>
@@ -74,20 +78,22 @@ export default function SayHello() {
           {/* Meeting Link */}
           <div className="mb-10">
             <h2 className="text-lg text-foreground mb-3 flex items-center">
-              <Calendar className="w-5 h-5 mr-2" />
+              <Calendar className="w-5 h-5 mr-2" aria-hidden="true" />
               Book a Meeting
             </h2>
             <p className="text-muted-foreground mb-4">
               For when email feels too async (but really, is it?):
             </p>
             <a
-              href="https://cal.com/yourusername"
+              href="https://cal.com/web-dev-sayantan"
               target="_blank"
               rel="noopener noreferrer"
+              className={cn(
+                buttonVariants({ variant: "outline" }),
+                "hover:bg-foreground/5",
+              )}
             >
-              <Button variant="outline" className="hover:bg-foreground/5">
-                Schedule a Call
-              </Button>
+              Schedule a Call
             </a>
             <p className="text-xs text-muted-foreground mt-2">
               Default duration: 30 minutes. Actual useful time: 12 minutes.

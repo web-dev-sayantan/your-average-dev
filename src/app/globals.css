@@ -47,6 +47,7 @@
 }
 
 :root {
+  -webkit-tap-highlight-color: transparent;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -83,6 +84,7 @@
 }
 
 .dark {
+  color-scheme: dark;
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -125,17 +127,22 @@
     @apply bg-background text-foreground;
   }
 
+  a,
+  button {
+    touch-action: manipulation;
+  }
+
   /* Code block styles for rehype-pretty-code */
   pre {
     @apply overflow-x-auto rounded-lg border border-border bg-muted p-4 text-sm;
   }
 
-  pre > code {
-    @apply grid;
-  }
-
   code {
     @apply font-mono text-sm;
+  }
+
+  pre > code {
+    @apply grid;
   }
 
   /* Inline code */
@@ -175,7 +182,7 @@
 
   /* Override shiki background to use our CSS vars */
   pre[data-theme] {
-    background-color: var(--muted) !important;
+    background-color: var(--muted);
   }
 
   code[data-theme] span {
@@ -184,6 +191,10 @@
 
   .dark code[data-theme] span {
     color: var(--shiki-dark);
+  }
+
+  .prose-custom :is(h1, h2, h3, h4, h5, h6) {
+    scroll-margin-top: 6rem;
   }
 }
 
@@ -220,6 +231,12 @@
     100% {
       background-position: 0 0;
       opacity: 0.15;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .grain-overlay {
+      animation: none;
     }
   }
 }

@@ -3,7 +3,10 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center font-sans bg-background">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 sm:items-start">
+      <main
+        id="main-content"
+        className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 sm:items-start"
+      >
         <section>
           <p className="text-muted-foreground">
             Lorem ipsum,{" "}
@@ -12,12 +15,14 @@ export default function Home() {
             </span>
           </p>
           <br />
-          <p className="flex flex-wrap items-baseline text-muted-foreground">
-            I'm{" "}
-            <h1 className="text-2xl text-foreground">&nbsp;Sayantan.&nbsp;</h1>{" "}
-            An average software&nbsp;
-            <span className="line-through">developer</span>&nbsp;engineer.
-          </p>
+          <div className="flex flex-wrap items-baseline text-muted-foreground">
+            <span>I'm</span>
+            <h1 className="text-2xl text-foreground">&nbsp;Sayantan.&nbsp;</h1>
+            <span>
+              An average software{" "}
+              <span className="line-through">developer</span> engineer.
+            </span>
+          </div>
           <p className="text-muted-foreground mt-3">
             I've worked for{" "}
             <span className="text-destructive/90">enterprises</span> since{" "}
