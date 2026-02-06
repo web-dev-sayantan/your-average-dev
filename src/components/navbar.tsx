@@ -71,7 +71,7 @@ export default function Navbar() {
             href="/"
             className="text-sm font-semibold tracking-tight text-foreground"
           >
-            your_average_dev
+            an_average_dev
           </Link>
           <Link
             href="/say-hello"
@@ -122,7 +122,7 @@ export default function Navbar() {
       >
         <div className="flex items-center justify-between px-4 py-4">
           <span className="text-sm font-semibold tracking-tight text-foreground">
-            your_average_dev
+            an_average_dev
           </span>
           <button
             type="button"

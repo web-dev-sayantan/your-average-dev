@@ -31,7 +31,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${rant.title} | your_average_dev`,
+    title: `${rant.title} | an_average_dev`,
     description: rant.excerpt,
     openGraph: {
       title: rant.title,
