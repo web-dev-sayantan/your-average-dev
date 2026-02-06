@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import type { Theme } from "@/lib/theme";
 import { ThemeProvider, ThemeScript } from "@/lib/theme";
 import "./globals.css";
+import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 
 const geistSans = Geist({
@@ -108,7 +109,7 @@ export default async function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
         <ThemeProvider defaultTheme={defaultTheme}>
           <a
@@ -119,7 +120,8 @@ export default async function RootLayout({
           </a>
           <div className="grain-overlay" aria-hidden="true" />
           <Navbar />
-          {children}
+          <main className="flex-1 flex flex-col w-full">{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

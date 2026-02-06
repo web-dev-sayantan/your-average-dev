@@ -51,7 +51,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center font-sans bg-background">
+    <div className="flex flex-1 items-center justify-center font-sans bg-background">
       <script
         type="application/ld+json"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: Safe - using JSON.stringify for JSON-LD structured data
@@ -59,7 +59,7 @@ export default function Home() {
       />
       <main
         id="main-content"
-        className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 sm:items-start"
+        className="flex w-full max-w-3xl flex-col items-center justify-between py-32 px-16 sm:items-start"
       >
         <section>
           <p className="text-muted-foreground">

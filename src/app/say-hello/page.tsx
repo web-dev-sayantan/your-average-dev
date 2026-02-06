@@ -35,10 +35,10 @@ export const metadata: Metadata = {
 
 export default function SayHello() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+    <div className="flex flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main
         id="main-content"
-        className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start"
+        className="flex w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start"
       >
         <section className="w-full">
           <h1 className="text-2xl text-foreground mb-6">Say Hello</h1>

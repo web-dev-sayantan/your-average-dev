@@ -320,10 +320,10 @@ const usesData: UsesSection[] = [
 
 export default function UsesPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center font-sans bg-zinc-50 dark:bg-black">
+    <div className="flex flex-1 items-center justify-center font-sans bg-zinc-50 dark:bg-black">
       <main
         id="main-content"
-        className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-6 sm:px-16 bg-white dark:bg-black sm:items-start"
+        className="flex w-full max-w-3xl flex-col items-center justify-between py-32 px-6 sm:px-16 bg-white dark:bg-black sm:items-start"
       >
         <section className="w-full">
           {/* Header */}

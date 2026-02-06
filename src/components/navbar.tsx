@@ -177,7 +177,7 @@ export default function Navbar() {
   }, [isMenuOpen]);
 
   return (
-    <header className="w-full border-b border-border/60 backdrop-blur-lg md:sticky md:top-0 md:z-40">
+    <header className="relative z-50 w-full border-b border-border/60 backdrop-blur-lg md:sticky md:top-0 md:z-40">
       <nav
         id="site-nav"
         className="relative mx-auto flex h-16 items-center justify-between px-4 md:grid md:max-w-6xl md:grid-cols-[1fr_auto_1fr] md:gap-6"
@@ -233,7 +233,7 @@ export default function Navbar() {
         aria-modal="true"
         aria-labelledby="mobile-menu-title"
         className={cn(
-          "fixed right-0 top-0 z-50 flex h-dvh w-full flex-col bg-background/95 backdrop-blur overscroll-contain transition-transform duration-300 md:hidden",
+          "fixed right-0 top-0 flex h-dvh w-full flex-col bg-background/95 backdrop-blur overscroll-contain transition-transform duration-300 md:hidden",
           isMenuOpen
             ? "translate-x-0 opacity-100"
             : "translate-x-full pointer-events-none opacity-0 invisible",
@@ -244,7 +244,7 @@ export default function Navbar() {
         <h2 id="mobile-menu-title" className="sr-only">
           Mobile navigation
         </h2>
-        <div className="flex items-center justify-between px-4 py-4">
+        <div className="flex items-center justify-between p-4 z-50">
           <span className="text-sm font-semibold tracking-tight text-foreground">
             an_average_dev
           </span>
@@ -259,7 +259,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        <div className="flex flex-1 flex-col justify-between px-6 py-12">
+        <div className="flex flex-1 flex-col justify-between px-6 py-12 z-50">
           <div className="flex flex-col items-center gap-12 text-lg">
             {renderNavLinks({
               baseClassName:

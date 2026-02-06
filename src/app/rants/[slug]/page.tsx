@@ -115,7 +115,7 @@ export default async function RantPage({ params }: PageProps) {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+    <div className="flex flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <script
         type="application/ld+json"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: Safe - using JSON.stringify for JSON-LD structured data
@@ -123,7 +123,7 @@ export default async function RantPage({ params }: PageProps) {
       />
       <main
         id="main-content"
-        className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between px-16 py-32 bg-white dark:bg-black sm:items-start"
+        className="flex w-full max-w-3xl flex-col items-center justify-between px-16 py-32 bg-white dark:bg-black sm:items-start"
       >
         <article className="w-full">
           <Link

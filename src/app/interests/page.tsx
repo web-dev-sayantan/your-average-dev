@@ -85,10 +85,10 @@ const deadInterests: Interest[] = [
 
 export default function Interests() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+    <div className="flex flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main
         id="main-content"
-        className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start"
+        className="flex w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start"
       >
         <section>
           <p className="text-muted-foreground">
@@ -98,11 +98,9 @@ export default function Interests() {
             </span>
           </p>
           <br />
-          <div className="flex items-baseline text-muted-foreground">
-            <span>Things I do when</span>
-            <h1 className="text-2xl text-foreground">
-              &nbsp;I'm not coding.&nbsp;
-            </h1>
+          <div className="flex flex-wrap items-baseline text-muted-foreground">
+            <span>Things I do when &nbsp;</span>
+            <h1 className="text-2xl text-foreground">I'm not coding.&nbsp;</h1>
           </div>
           <p className="text-muted-foreground mt-3">
             Or pretending to code while actually watching YouTube tutorials at
@@ -110,8 +108,7 @@ export default function Interests() {
           </p>
           <br />
           <h2 className="flex items-baseline text-foreground">
-            {" "}
-            ✨ Current Interests:{" "}
+            ✨ Current Interests:
           </h2>
           <ul className="list-disc list-inside">
             {currentInterests.map((interest, index) => (
