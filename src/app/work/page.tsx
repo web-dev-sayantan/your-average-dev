@@ -1,4 +1,38 @@
 import { MapPin } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Work",
+  description:
+    "Employment timeline, roles, and projects across enterprises and product teams.",
+  authors: [{ name: "Sayantan Dey" }],
+  alternates: {
+    canonical: "/work",
+  },
+  openGraph: {
+    title: "Work | an_average_dev",
+    description:
+      "Employment timeline, roles, and projects across enterprises and product teams.",
+    url: "/work",
+    type: "profile",
+    images: [
+      {
+        url: "/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "an_average_dev",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Work | an_average_dev",
+    description:
+      "Employment timeline, roles, and projects across enterprises and product teams.",
+    creator: "@no0bdev",
+    images: ["/android-chrome-512x512.png"],
+  },
+};
 
 const employmentTimeline = [
   {

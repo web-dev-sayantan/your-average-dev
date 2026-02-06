@@ -1,6 +1,37 @@
 import { Calendar, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import type { Metadata } from "next";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "Say Hello",
+  description: "Ways to reach me: email, social links, and a meeting link.",
+  authors: [{ name: "Sayantan Dey" }],
+  alternates: {
+    canonical: "/say-hello",
+  },
+  openGraph: {
+    title: "Say Hello | an_average_dev",
+    description: "Ways to reach me: email, social links, and a meeting link.",
+    url: "/say-hello",
+    type: "website",
+    images: [
+      {
+        url: "/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "an_average_dev",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Say Hello | an_average_dev",
+    description: "Ways to reach me: email, social links, and a meeting link.",
+    creator: "@no0bdev",
+    images: ["/android-chrome-512x512.png"],
+  },
+};
 
 export default function SayHello() {
   return (

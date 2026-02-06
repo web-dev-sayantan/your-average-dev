@@ -1,7 +1,39 @@
+import type { Metadata } from "next";
+
 interface Interest {
   name: string;
   description: string;
 }
+
+export const metadata: Metadata = {
+  title: "Interests",
+  description: "What I do when I'm not coding, plus hobbies I retired.",
+  authors: [{ name: "Sayantan Dey" }],
+  alternates: {
+    canonical: "/interests",
+  },
+  openGraph: {
+    title: "Interests | an_average_dev",
+    description: "What I do when I'm not coding, plus hobbies I retired.",
+    url: "/interests",
+    type: "website",
+    images: [
+      {
+        url: "/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "an_average_dev",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Interests | an_average_dev",
+    description: "What I do when I'm not coding, plus hobbies I retired.",
+    creator: "@no0bdev",
+    images: ["/android-chrome-512x512.png"],
+  },
+};
 
 const currentInterests: Interest[] = [
   {

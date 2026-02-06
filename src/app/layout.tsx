@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { ThemeProvider, ThemeScript } from "@/lib/theme";
-import type { Theme } from "@/lib/theme";
 import { cookies } from "next/headers";
+import type { Theme } from "@/lib/theme";
+import { ThemeProvider, ThemeScript } from "@/lib/theme";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 
@@ -17,9 +17,51 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "an_average_dev",
-  description: "A low effort complilation of me as a developer.",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.anaverage.dev",
+  ),
+  title: {
+    default: "Sayantan Dey | an_average_dev",
+    template: "%s | an_average_dev",
+  },
+  description: "A low effort compilation of me as a developer.",
+  applicationName: "an_average_dev",
   manifest: "/site.webmanifest",
+  authors: [{ name: "Sayantan Dey", url: "/" }],
+  creator: "Sayantan Dey",
+  openGraph: {
+    title: "Sayantan Dey | an_average_dev",
+    description: "A low effort compilation of me as a developer.",
+    url: "/",
+    siteName: "an_average_dev",
+    type: "website",
+    images: [
+      {
+        url: "/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "an_average_dev",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sayantan Dey | an_average_dev",
+    description: "A low effort compilation of me as a developer.",
+    creator: "@no0bdev",
+    images: ["/android-chrome-512x512.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export const viewport: Viewport = {

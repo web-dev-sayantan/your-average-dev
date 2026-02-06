@@ -1,8 +1,62 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Portfolio of Sayantan Dey, an average software engineer who ships web apps, rants, and resumes.",
+  authors: [{ name: "Sayantan Dey" }],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Sayantan Dey | an_average_dev",
+    description:
+      "Portfolio of Sayantan Dey, an average software engineer who ships web apps, rants, and resumes.",
+    url: "/",
+    type: "website",
+    images: [
+      {
+        url: "/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "an_average_dev",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sayantan Dey | an_average_dev",
+    description:
+      "Portfolio of Sayantan Dey, an average software engineer who ships web apps, rants, and resumes.",
+    creator: "@no0bdev",
+    images: ["/android-chrome-512x512.png"],
+  },
+};
+
 export default function Home() {
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.anaverage.dev";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Sayantan Dey",
+    url: siteUrl,
+    jobTitle: "Software Engineer",
+    sameAs: [
+      "https://github.com/web-dev-sayantan",
+      "https://linkedin.com/in/webdevsayantan",
+      "https://x.com/no0bdev",
+    ],
+  };
+
   return (
     <div className="flex min-h-screen items-center justify-center font-sans bg-background">
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: Safe - using JSON.stringify for JSON-LD structured data
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <main
         id="main-content"
         className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 sm:items-start"

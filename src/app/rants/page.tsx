@@ -1,5 +1,36 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllRants } from "@/lib/mdx";
+
+export const metadata: Metadata = {
+  title: "Rants",
+  description: "Unfiltered rants about design, UX, and web dev hot takes.",
+  authors: [{ name: "Sayantan Dey" }],
+  alternates: {
+    canonical: "/rants",
+  },
+  openGraph: {
+    title: "Rants | an_average_dev",
+    description: "Unfiltered rants about design, UX, and web dev hot takes.",
+    url: "/rants",
+    type: "website",
+    images: [
+      {
+        url: "/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "an_average_dev",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rants | an_average_dev",
+    description: "Unfiltered rants about design, UX, and web dev hot takes.",
+    creator: "@no0bdev",
+    images: ["/android-chrome-512x512.png"],
+  },
+};
 
 function formatDate(dateString: string): string {
   return new Date(dateString).toLocaleDateString("en-US", {

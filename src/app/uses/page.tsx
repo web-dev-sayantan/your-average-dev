@@ -3,7 +3,38 @@
 // Edit the `usesData` array below to add/remove items.
 // ──────────────────────────────────────────────
 
+import type { Metadata } from "next";
 import SectionNav from "@/components/section-nav";
+
+export const metadata: Metadata = {
+  title: "Uses",
+  description: "Hardware, software, tools, and desk setup that I use daily.",
+  authors: [{ name: "Sayantan Dey" }],
+  alternates: {
+    canonical: "/uses",
+  },
+  openGraph: {
+    title: "Uses | an_average_dev",
+    description: "Hardware, software, tools, and desk setup that I use daily.",
+    url: "/uses",
+    type: "website",
+    images: [
+      {
+        url: "/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "an_average_dev",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Uses | an_average_dev",
+    description: "Hardware, software, tools, and desk setup that I use daily.",
+    creator: "@no0bdev",
+    images: ["/android-chrome-512x512.png"],
+  },
+};
 
 type UsesItem = {
   name: string;

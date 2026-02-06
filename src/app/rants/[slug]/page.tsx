@@ -33,11 +33,35 @@ export async function generateMetadata({
   return {
     title: `${rant.title} | an_average_dev`,
     description: rant.excerpt,
+    keywords: rant.tags,
+    authors: [{ name: "Sayantan Dey" }],
+    alternates: {
+      canonical: `/rants/${rant.slug}`,
+    },
     openGraph: {
       title: rant.title,
       description: rant.excerpt,
       type: "article",
       publishedTime: rant.date,
+      modifiedTime: rant.date,
+      authors: ["Sayantan Dey"],
+      tags: rant.tags,
+      url: `/rants/${rant.slug}`,
+      images: [
+        {
+          url: "/android-chrome-512x512.png",
+          width: 512,
+          height: 512,
+          alt: rant.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: rant.title,
+      description: rant.excerpt,
+      creator: "@no0bdev",
+      images: ["/android-chrome-512x512.png"],
     },
   };
 }
@@ -67,8 +91,36 @@ export default async function RantPage({ params }: PageProps) {
     notFound();
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: rant.title,
+    description: rant.excerpt,
+    datePublished: rant.date,
+    dateModified: rant.date,
+    author: {
+      "@type": "Person",
+      name: "Sayantan Dey",
+      url: siteUrl,
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Sayantan Dey",
+      url: siteUrl,
+    },
+    keywords: rant.tags.join(", "),
+    articleBody: rant.content,
+    url: `${siteUrl}/rants/${rant.slug}`,
+  };
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: Safe - using JSON.stringify for JSON-LD structured data
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <main
         id="main-content"
         className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between px-16 py-32 bg-white dark:bg-black sm:items-start"
