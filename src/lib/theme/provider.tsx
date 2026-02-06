@@ -18,18 +18,39 @@ import type {
 const DEFAULT_STORAGE_KEY = "theme";
 const DEFAULT_THEME: Theme = "system";
 const LIGHT_DARK_CLASSES: ResolvedTheme[] = ["light", "dark"];
+const THEME_COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
 
 const ThemeContext = createContext<UseThemeProps | undefined>(undefined);
 
+/**
+ * Type guard function that narrows a string or null value to a valid Theme type.
+ * @param value - The value to check against valid theme options
+ * @returns `true` if value is one of "light", "dark", or "system"; otherwise `false`
+ * @typeParam value is Theme - Asserts that if the function returns true, TypeScript will treat `value` as a Theme type
+ */
 const isTheme = (value: string | null): value is Theme =>
   value === "light" || value === "dark" || value === "system";
 
 const getSystemTheme = (): ResolvedTheme =>
   window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
+const getCookieValue = (name: string): string | null => {
+  if (typeof document === "undefined") {
+    return null;
+  }
+
+  const cookies = document.cookie ? document.cookie.split("; ") : [];
+  const cookie = cookies.find((entry) => entry.startsWith(`${name}=`));
+
+  return cookie ? cookie.slice(name.length + 1) : null;
+};
+
+const createThemeCookie = (name: string, value: Theme) =>
+  `${name}=${value}; path=/; max-age=${THEME_COOKIE_MAX_AGE}; samesite=lax`;
+
 const getStoredTheme = (storageKey: string, defaultTheme: Theme): Theme => {
   try {
-    const storedTheme = window.localStorage.getItem(storageKey);
+    const storedTheme = getCookieValue(storageKey);
     return isTheme(storedTheme) ? storedTheme : defaultTheme;
   } catch {
     return defaultTheme;
@@ -78,7 +99,7 @@ export const ThemeProvider = ({
       : getStoredTheme(storageKey, defaultTheme),
   );
   const [systemTheme, setSystemTheme] = useState<ResolvedTheme>(() =>
-    typeof window === "undefined" ? "light" : getSystemTheme(),
+    typeof window === "undefined" ? "dark" : getSystemTheme(),
   );
 
   const resolvedTheme: ResolvedTheme = theme === "system" ? systemTheme : theme;
@@ -87,9 +108,10 @@ export const ThemeProvider = ({
     (nextTheme: Theme) => {
       setThemeState(nextTheme);
       try {
-        window.localStorage.setItem(storageKey, nextTheme);
+        // biome-ignore lint: Cookie is used to sync theme between server and client.
+        document.cookie = createThemeCookie(storageKey, nextTheme);
       } catch {
-        // Ignore storage failures in restricted environments.
+        // Ignore cookie failures in restricted environments.
       }
     },
     [storageKey],
@@ -112,28 +134,12 @@ export const ThemeProvider = ({
   }, [enableSystem]);
 
   useEffect(() => {
-    const resolved = theme === "system" ? systemTheme : theme;
-
     if (disableTransitionOnChange) {
       disableTransitionsTemporarily();
     }
 
-    applyThemeClass(resolved);
-  }, [theme, systemTheme, disableTransitionOnChange]);
-
-  useEffect(() => {
-    const handleStorage = (event: StorageEvent) => {
-      if (event.key !== storageKey) {
-        return;
-      }
-
-      const nextTheme = isTheme(event.newValue) ? event.newValue : defaultTheme;
-      setThemeState(nextTheme);
-    };
-
-    window.addEventListener("storage", handleStorage);
-    return () => window.removeEventListener("storage", handleStorage);
-  }, [defaultTheme, storageKey]);
+    applyThemeClass(resolvedTheme);
+  }, [resolvedTheme, disableTransitionOnChange]);
 
   const contextValue = useMemo<UseThemeProps>(
     () => ({
