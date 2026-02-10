@@ -14,6 +14,7 @@ import type {
   ThemeProviderProps,
   UseThemeProps,
 } from "./types";
+import { getConsentFromDocument } from "@/lib/cookies/consent";
 
 const DEFAULT_STORAGE_KEY = "theme";
 const DEFAULT_THEME: Theme = "system";
@@ -50,6 +51,10 @@ const createThemeCookie = (name: string, value: Theme) =>
 
 const getStoredTheme = (storageKey: string, defaultTheme: Theme): Theme => {
   try {
+    const consent = getConsentFromDocument();
+    if (!consent?.appearance) {
+      return defaultTheme;
+    }
     const storedTheme = getCookieValue(storageKey);
     return isTheme(storedTheme) ? storedTheme : defaultTheme;
   } catch {
@@ -108,6 +113,10 @@ export const ThemeProvider = ({
     (nextTheme: Theme) => {
       setThemeState(nextTheme);
       try {
+        const consent = getConsentFromDocument();
+        if (!consent?.appearance) {
+          return;
+        }
         // biome-ignore lint: Cookie is used to sync theme between server and client.
         document.cookie = createThemeCookie(storageKey, nextTheme);
       } catch {

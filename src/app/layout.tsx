@@ -3,9 +3,12 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { cookies } from "next/headers";
 import type { Theme } from "@/lib/theme";
 import { ThemeProvider, ThemeScript } from "@/lib/theme";
+import { CONSENT_COOKIE, parseConsentCookieValue } from "@/lib/cookies/consent";
 import "./globals.css";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
+import CookieBanner from "@/components/cookie-banner";
+import AnalyticsConsent from "@/components/analytics-consent";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -78,7 +81,9 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const cookieStore = await cookies();
-  const storedTheme = cookieStore.get("theme")?.value;
+  const consentValue = cookieStore.get(CONSENT_COOKIE)?.value;
+  const consent = parseConsentCookieValue(consentValue);
+  const storedTheme = consent?.appearance ? cookieStore.get("theme")?.value : undefined;
   const defaultTheme: Theme | undefined =
     storedTheme === "light" ||
     storedTheme === "dark" ||
@@ -122,6 +127,8 @@ export default async function RootLayout({
           <Navbar />
           <main className="flex-1 flex flex-col w-full">{children}</main>
           <Footer />
+          <AnalyticsConsent />
+          <CookieBanner />
         </ThemeProvider>
       </body>
     </html>
