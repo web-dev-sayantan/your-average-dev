@@ -1,14 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { cookies } from "next/headers";
+import { CONSENT_COOKIE, parseConsentCookieValue } from "@/lib/cookies/consent";
 import type { Theme } from "@/lib/theme";
 import { ThemeProvider, ThemeScript } from "@/lib/theme";
-import { CONSENT_COOKIE, parseConsentCookieValue } from "@/lib/cookies/consent";
 import "./globals.css";
+import AnalyticsConsent from "@/components/analytics-consent";
+import CookieBanner from "@/components/cookie-banner";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
-import CookieBanner from "@/components/cookie-banner";
-import AnalyticsConsent from "@/components/analytics-consent";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -83,7 +83,9 @@ export default async function RootLayout({
   const cookieStore = await cookies();
   const consentValue = cookieStore.get(CONSENT_COOKIE)?.value;
   const consent = parseConsentCookieValue(consentValue);
-  const storedTheme = consent?.appearance ? cookieStore.get("theme")?.value : undefined;
+  const storedTheme = consent?.appearance
+    ? cookieStore.get("theme")?.value
+    : undefined;
   const defaultTheme: Theme | undefined =
     storedTheme === "light" ||
     storedTheme === "dark" ||

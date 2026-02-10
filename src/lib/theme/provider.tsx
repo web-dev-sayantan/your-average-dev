@@ -8,13 +8,13 @@ import {
   useMemo,
   useState,
 } from "react";
+import { getConsentFromDocument } from "@/lib/cookies/consent";
 import type {
   ResolvedTheme,
   Theme,
   ThemeProviderProps,
   UseThemeProps,
 } from "./types";
-import { getConsentFromDocument } from "@/lib/cookies/consent";
 
 const DEFAULT_STORAGE_KEY = "theme";
 const DEFAULT_THEME: Theme = "system";
