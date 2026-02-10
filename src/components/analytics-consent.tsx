@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Analytics } from "@vercel/analytics/next";
+import { useEffect, useState } from "react";
 import { getConsentFromDocument } from "@/lib/cookies/consent";
 
-const isAnalyticsEnabled = () =>
-  Boolean(getConsentFromDocument()?.analytics);
+const isAnalyticsEnabled = () => Boolean(getConsentFromDocument()?.analytics);
 
 export default function AnalyticsConsent() {
   const [enabled, setEnabled] = useState(false);

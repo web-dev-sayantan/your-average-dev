@@ -2,9 +2,9 @@
 
 import { useEffect, useMemo, useState } from "react";
 import {
+  type CookiePreferences,
   createConsentCookieValue,
   getConsentFromDocument,
-  type CookiePreferences,
 } from "@/lib/cookies/consent";
 
 const THEME_COOKIE = "theme";
