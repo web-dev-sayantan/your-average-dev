@@ -2,9 +2,9 @@
 
 import { useEffect, useMemo, useState } from "react";
 import {
+  type CookiePreferences,
   createConsentCookieValue,
   getConsentFromDocument,
-  type CookiePreferences,
 } from "@/lib/cookies/consent";
 
 const THEME_COOKIE = "theme";
@@ -75,27 +75,29 @@ export default function CookieBanner() {
   }
 
   return (
-    <div className="fixed inset-x-4 bottom-4 z-50">
-      <div className="mx-auto flex max-w-3xl flex-col gap-3 rounded-2xl border border-border bg-background/95 px-5 py-4 shadow-lg backdrop-blur">
+    <div className="max-w-dvw fixed inset-x-0 bottom-0 z-50 box-border overflow-x-clip p-3 sm:bottom-4 sm:p-4">
+      <div className="md:mx-auto flex w-full max-w-dvw md:max-w-3xl box-border flex-col gap-3 rounded-2xl border border-border bg-background/95 px-4 py-4 shadow-lg backdrop-blur sm:px-5">
         <div className="space-y-2">
-          <p className="text-sm text-foreground">
+          <p className="text-sm leading-relaxed text-foreground">
             Cookie menu: choose your own crumbs. Essential ones keep the lights
             on, appearance cookies remember your theme, and analytics help me
             figure out which pixels you vibe with.
           </p>
           <div className="flex flex-col gap-2 rounded-xl border border-border bg-card/60 p-3 text-sm">
-            <label className="flex items-center justify-between gap-4">
-              <span className="text-foreground">Essential cookies</span>
+            <label className="flex items-start justify-between gap-3 sm:items-center">
+              <span className="min-w-0 text-foreground">Essential cookies</span>
               <input
                 type="checkbox"
                 checked
                 disabled
-                className="h-4 w-4 cursor-not-allowed accent-foreground"
+                className="h-4 w-4 shrink-0 cursor-not-allowed accent-foreground"
                 aria-label="Essential cookies are always on"
               />
             </label>
-            <label className="flex items-center justify-between gap-4">
-              <span className="text-foreground">Appearance cookies</span>
+            <label className="flex items-start justify-between gap-3 sm:items-center">
+              <span className="min-w-0 text-foreground">
+                Appearance cookies
+              </span>
               <input
                 type="checkbox"
                 checked={preferences.appearance}
@@ -105,11 +107,11 @@ export default function CookieBanner() {
                     appearance: event.target.checked,
                   }))
                 }
-                className="h-4 w-4 accent-foreground"
+                className="h-4 w-4 shrink-0 accent-foreground"
               />
             </label>
-            <label className="flex items-center justify-between gap-4">
-              <span className="text-foreground">Analytics cookies</span>
+            <label className="flex items-start justify-between gap-3 sm:items-center">
+              <span className="min-w-0 text-foreground">Analytics cookies</span>
               <input
                 type="checkbox"
                 checked={preferences.analytics}
@@ -119,7 +121,7 @@ export default function CookieBanner() {
                     analytics: event.target.checked,
                   }))
                 }
-                className="h-4 w-4 accent-foreground"
+                className="h-4 w-4 shrink-0 accent-foreground"
               />
             </label>
           </div>
@@ -128,21 +130,21 @@ export default function CookieBanner() {
           <button
             type="button"
             onClick={handleEssentialOnly}
-            className="inline-flex items-center justify-center rounded-full border border-foreground/15 px-4 py-2 text-sm font-medium text-foreground transition hover:-translate-y-0.5 hover:shadow-md"
+            className="inline-flex w-full items-center justify-center rounded-full border border-foreground/15 px-4 py-2 text-sm font-medium text-foreground transition hover:-translate-y-0.5 hover:shadow-md sm:w-auto"
           >
             Essential only
           </button>
           <button
             type="button"
             onClick={handleAcceptAll}
-            className="inline-flex items-center justify-center rounded-full border border-foreground/10 bg-foreground px-4 py-2 text-sm font-medium text-background transition hover:-translate-y-0.5 hover:shadow-md"
+            className="inline-flex w-full items-center justify-center rounded-full border border-foreground/10 bg-foreground px-4 py-2 text-sm font-medium text-background transition hover:-translate-y-0.5 hover:shadow-md sm:w-auto"
           >
             Accept all crumbs
           </button>
           <button
             type="button"
             onClick={handleSave}
-            className="inline-flex items-center justify-center rounded-full border border-foreground/15 px-4 py-2 text-sm font-medium text-foreground transition hover:-translate-y-0.5 hover:shadow-md"
+            className="inline-flex w-full items-center justify-center rounded-full border border-foreground/15 px-4 py-2 text-sm font-medium text-foreground transition hover:-translate-y-0.5 hover:shadow-md sm:w-auto"
           >
             Save my crumbs
           </button>

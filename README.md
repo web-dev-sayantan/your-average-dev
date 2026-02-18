@@ -20,6 +20,30 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## `/now` page integration setup
+
+The `/now` route supports:
+
+- Manual content for books/blogs/series/movies/sports in `src/lib/now/content.ts`
+- GitHub contribution graph via GitHub GraphQL API
+- YouTube Music playlists via YouTube playlist feeds
+
+Environment variables:
+
+```bash
+# Defaults to web-dev-sayantan if not set
+GITHUB_USERNAME=your-github-username
+
+# Required for GitHub GraphQL API (public contribution data)
+GITHUB_TOKEN=ghp_xxx
+
+# Comma-separated YouTube playlist IDs (works with YouTube Music playlists too)
+YOUTUBE_MUSIC_PLAYLIST_IDS=PLxxx,PLyyy
+
+# Optional comma-separated labels in the same order as IDs
+YOUTUBE_MUSIC_PLAYLIST_LABELS=Focus Mix,Coding Mix
+```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
