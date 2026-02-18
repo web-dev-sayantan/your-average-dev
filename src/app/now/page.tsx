@@ -285,8 +285,7 @@ export default async function NowPage() {
           </div>
 
           <p className="mt-8 text-sm text-muted-foreground">
-            Data sources: GitHub GraphQL API and YouTube feeds for configured
-            playlists.
+            Data sources: <span className="italic">Trust Me Bro™</span>
           </p>
         </section>
       </main>
